@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ExchangeRateComponent } from './components/exchange-rate/exchange-rate.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ExchangeRateComponent
   ],
   imports: [
     BrowserModule,
