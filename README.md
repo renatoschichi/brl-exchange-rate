@@ -5,8 +5,6 @@ This project is an Angular application that displays the exchange rate against t
 
 📁 <strong>Prerequisites:</strong> 
 
-- Before you start, make sure you have the following requirements:
-
 - Node.js installed
 
 - Angular CLI installed
