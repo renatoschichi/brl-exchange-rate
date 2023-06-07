@@ -1,27 +1,45 @@
-# BrlExchangeRate
+<strong>BRL Exchange Rate</strong> <br>
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.2.
+This project is an Angular application that displays the exchange rate against the Brazilian Real (BRL) <br>
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+<strong>Prerequisites:</strong> 
 
-## Code scaffolding
+Before you start, make sure you have the following requirements:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Node.js installed
 
-## Build
+Angular CLI installed
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+<strong>Installation:</strong>
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Clone the repository in a terminal
 
-## Running end-to-end tests
+Use the command "git clone https://github.com/renatoschichi/brl-exchange-rate.git"
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Open the project in a terminal
 
-## Further help
+Install node_modules with "npm install" command
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Run the project with "ng serve" command
+
+Access the application at http://localhost:4200/
+
+
+<strong>Testing</strong>
+
+To run the unit tests, use the command "ng test"
+
+
+<strong>This project utilizes the following technologies and dependencies:</strong>
+
+Angular (v14.1.0)
+
+Bootstrap (v5.3.0)
+
+Bootstrap Icons (v1.10.5)
+
+RxJS (v7.5.0)
+
+Zone.js (v0.11.4)
