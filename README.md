@@ -3,7 +3,7 @@
 This project is an Angular application that displays the exchange rate against the Brazilian Real (BRL) <br>
 
 
-<strong>Prerequisites:</strong> 
+📁 <strong>Prerequisites:</strong> 
 
 Before you start, make sure you have the following requirements:
 
@@ -12,7 +12,7 @@ Node.js installed
 Angular CLI installed
 
 
-<strong>Installation:</strong>
+🛠️ <strong>To run the project:</strong>
 
 Clone the repository in a terminal
 
@@ -27,7 +27,7 @@ Run the project with "ng serve" command
 Access the application at http://localhost:4200/
 
 
-<strong>Testing</strong>
+✅ <strong>Testing</strong>
 
 To run the unit tests, use the command "ng test"
 
