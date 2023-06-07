@@ -51,30 +51,31 @@
             <div class="d-flex flex-row justify-content-between">
               <div class="properties">
                 <p class="card-p">Open:</p>
-                <p class="card-p-result">R$ {{ dailyRate.open }}</p>
+                <p class="card-p-result" [ngStyle]="{'color': dailyRate.closeDiffPercent >= 0 ? '#69C669' : '#E54E4E'}">R$ {{ dailyRate.open }}</p>
               </div>
               <div class="properties">
                 <p class="card-p">Close:</p>
-                <p class="card-p-result">R$ {{ dailyRate.close }}</p>
+                <p class="card-p-result" [ngStyle]="{'color': dailyRate.closeDiffPercent >= 0 ? '#69C669' : '#E54E4E'}">R$ {{ dailyRate.close }}</p>
               </div>
             </div>
 
             <div class="d-flex flex-row justify-content-between">
               <div class="properties">
                 <p class="card-p">High:</p>
-                <p class="card-p-result">R$ {{ dailyRate.high }}</p>
+                <p class="card-p-result" [ngStyle]="{'color': dailyRate.closeDiffPercent >= 0 ? '#69C669' : '#E54E4E'}">R$ {{ dailyRate.high }}</p>
               </div>
               <div class="properties">
                 <p class="card-p">Low:</p>
-                <p class="card-p-result">R$ {{ dailyRate.low }}</p>
+                <p class="card-p-result" [ngStyle]="{'color': dailyRate.closeDiffPercent >= 0 ? '#69C669' : '#E54E4E'}">R$ {{ dailyRate.low }}</p>
               </div>
             </div>
 
             <div class="properties">
               <p class="card-p">close diff:</p>
-              <p class="card-p-green">{{ dailyRate.closeDiffPercent }}%</p>
-              <i class="bi bi-arrow-down-short arrow-result"></i>
-            </div>
+              <p class="card-p-result" [ngStyle]="{'color': dailyRate.closeDiffPercent >= 0 ? '#69C669' : '#E54E4E'}">{{ dailyRate.closeDiffPercent }}%</p>
+              <i class="bi bi-arrow-up-short arrow-result" *ngIf="dailyRate.closeDiffPercent >= 0" [ngStyle]="{ color: '#69C669' }"></i>
+              <i class="bi bi-arrow-down-short arrow-result" *ngIf="dailyRate.closeDiffPercent < 0" [ngStyle]="{ color: '#E54E4E' }"></i>
+            </div>            
 
           </div>
         </ng-container>
@@ -88,7 +89,7 @@
     </div>
 
   </div>
-  <footer [ngClass]="{ 'visible-footer': !visibleItens }">
+  <footer [ngClass]="{ 'visible-footer': !isDataLoaded }">
     <p>Copyright {{ currentYear }} - Action Labs</p>
   </footer>
 </div>

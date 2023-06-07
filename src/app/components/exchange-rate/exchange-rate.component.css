@@ -235,23 +235,12 @@ h1 {
   color: #3F3F3F;  
 }
 
-.card-p-green {
-  font-family: 'Roboto';
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 24px;
-  display: flex;
-  align-items: center;
-  color: #69C669;
-}
-
 .arrow-result {
   font-family: 'Font Awesome 5 Pro';
   font-weight: 400;
   font-size: 24px;
   line-height: 24px;
   text-align: center;
-  color: #69C669;
 }
 
 .hr-result {

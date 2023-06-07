@@ -17,6 +17,7 @@ export class ExchangeRateComponent implements OnInit {
   currencyCode: string = '';
   previousDayCloseRate: number = 0;
   selectedCurrencyCode: string = 'USD';
+  isDataLoaded: boolean = false;
 
   constructor(
     private renderer: Renderer2,
@@ -67,6 +68,7 @@ export class ExchangeRateComponent implements OnInit {
         if (this.dailyExchangeRates && this.dailyExchangeRates.length > 0) {
           this.calculatePreviousDayCloseRate();
         }
+        this.isDataLoaded = true;
       });
   }
   
@@ -75,6 +77,7 @@ export class ExchangeRateComponent implements OnInit {
       const currentRate = this.dailyExchangeRates[i].close;
       const previousRate = this.dailyExchangeRates[i - 1].close;
       this.dailyExchangeRates[i].close_diff = (currentRate - previousRate).toFixed(4);
+      this.dailyExchangeRates[i].closeDiffPercent = (((currentRate - previousRate) / previousRate) * 100).toFixed(2);
     }
     this.previousDayCloseRate = this.dailyExchangeRates[0].close;
   }  
