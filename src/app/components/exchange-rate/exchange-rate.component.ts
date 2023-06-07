@@ -8,6 +8,7 @@ import { DailyExchangeRateService } from 'src/app/services/daily-exchange-rate/d
   styleUrls: ['./exchange-rate.component.css']
 })
 export class ExchangeRateComponent implements OnInit {
+  showResultContainer: boolean = false;
   visibleItens: boolean = false;
   exchangeRate: number | undefined = 0;
   dailyExchangeRates: any[] = [];
@@ -33,16 +34,12 @@ export class ExchangeRateComponent implements OnInit {
 
   toggleItens() {
     this.visibleItens = !this.visibleItens;
-    if (this.visibleItens) {
-      this.renderer.addClass(document.body, 'visible-footer');
-    } else {
-      this.renderer.removeClass(document.body, 'visible-footer');
-    }
   }
 
   loadExchangeRates() {
     this.fetchCurrentExchangeRate();
     this.fetchDailyExchangeRate();
+    this.showResultContainer = true;
   }
 
   fetchCurrentExchangeRate() {    
@@ -68,7 +65,6 @@ export class ExchangeRateComponent implements OnInit {
         if (this.dailyExchangeRates && this.dailyExchangeRates.length > 0) {
           this.calculatePreviousDayCloseRate();
         }
-        this.isDataLoaded = true;
       });
   }
   
