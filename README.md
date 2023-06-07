@@ -5,41 +5,41 @@ This project is an Angular application that displays the exchange rate against t
 
 📁 <strong>Prerequisites:</strong> 
 
-Before you start, make sure you have the following requirements:
+- Before you start, make sure you have the following requirements:
 
-Node.js installed
+- Node.js installed
 
-Angular CLI installed
+- Angular CLI installed
 
 
 🛠️ <strong>To run the project:</strong>
 
-Clone the repository in a terminal
+- Clone the repository in a terminal
 
-Use the command "git clone https://github.com/renatoschichi/brl-exchange-rate.git"
+- Use the command "git clone https://github.com/renatoschichi/brl-exchange-rate.git"
 
-Open the project in a terminal
+- Open the project in a terminal
 
-Install node_modules with "npm install" command
+- Install node_modules with "npm install" command
 
-Run the project with "ng serve" command
+- Run the project with "ng serve" command
 
-Access the application at http://localhost:4200/
+- Access the application at http://localhost:4200/
 
 
-✅ <strong>Testing</strong>
+✅ <strong>Testing:</strong>
 
-To run the unit tests, use the command "ng test"
+- To run the unit tests, use the command "ng test"
 
 
 💻 <strong>This project utilizes the following technologies and dependencies:</strong>
 
-Angular (v14.1.0)
+- Angular (v14.1.0)
 
-Bootstrap (v5.3.0)
+- Bootstrap (v5.3.0)
 
-Bootstrap Icons (v1.10.5)
+- Bootstrap Icons (v1.10.5)
 
-RxJS (v7.5.0)
+- RxJS (v7.5.0)
 
-Zone.js (v0.11.4)
+- Zone.js (v0.11.4)
