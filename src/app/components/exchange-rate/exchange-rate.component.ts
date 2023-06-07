@@ -9,13 +9,14 @@ import { DailyExchangeRateService } from 'src/app/services/daily-exchange-rate/d
 })
 export class ExchangeRateComponent implements OnInit {
   visibleItens: boolean = false;
-  exchangeRate: number | undefined;
+  exchangeRate: number | undefined = 0;
   dailyExchangeRates: any[] = [];
   currentDate: string = '';
   currentTime: string = '';
   currentYear: number = new Date().getFullYear();
   currencyCode: string = '';
   previousDayCloseRate: number = 0;
+  selectedCurrencyCode: string = 'USD';
 
   constructor(
     private renderer: Renderer2,
@@ -38,29 +39,37 @@ export class ExchangeRateComponent implements OnInit {
     }
   }
 
-  fetchCurrentExchangeRate() {
+  loadExchangeRates() {
+    this.fetchCurrentExchangeRate();
+    this.fetchDailyExchangeRate();
+  }
+
+  fetchCurrentExchangeRate() {    
     const apiKey = 'RVZG0GHEV2KORLNA';
-    const fromSymbol = 'USD';
+    const fromSymbol = this.selectedCurrencyCode;
     const toSymbol = 'BRL';
 
     this.currentExchangeRateService.getCurrentExchangeRate(apiKey, fromSymbol, toSymbol)
       .subscribe((response: any) => {
-        this.exchangeRate = response.exchange_rate;
+        this.exchangeRate = response.exchangeRate;
+        this.currencyCode = this.selectedCurrencyCode;
       });
   }
 
   fetchDailyExchangeRate() {
     const apiKey = 'RVZG0GHEV2KORLNA';
-    const fromSymbol = 'USD';
+    const fromSymbol = this.selectedCurrencyCode;
     const toSymbol = 'BRL';
-
+  
     this.dailyExchangeRateService.getDailyExchangeRate(apiKey, fromSymbol, toSymbol)
       .subscribe((response: any) => {
-        this.exchangeRate = response.exchange_rate;
-        this.calculatePreviousDayCloseRate();
+        this.dailyExchangeRates = response.data;
+        if (this.dailyExchangeRates && this.dailyExchangeRates.length > 0) {
+          this.calculatePreviousDayCloseRate();
+        }
       });
   }
-
+  
   calculatePreviousDayCloseRate() {
     for (let i = 1; i < this.dailyExchangeRates.length; i++) {
       const currentRate = this.dailyExchangeRates[i].close;
@@ -68,6 +77,6 @@ export class ExchangeRateComponent implements OnInit {
       this.dailyExchangeRates[i].close_diff = (currentRate - previousRate).toFixed(4);
     }
     this.previousDayCloseRate = this.dailyExchangeRates[0].close;
-  }
+  }  
 
 }
