@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-exchange-rate',
@@ -6,10 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./exchange-rate.component.css']
 })
 export class ExchangeRateComponent implements OnInit {
+  visibleItens: boolean = false;
 
-  constructor() { }
+  constructor(private renderer: Renderer2) { }
 
   ngOnInit(): void {
+  }
+
+  toggleItens() {
+    this.visibleItens = !this.visibleItens;
+    if (this.visibleItens) {
+      this.renderer.addClass(document.body, 'visible-footer');
+    } else {
+      this.renderer.removeClass(document.body, 'visible-footer');
+    }
   }
 
   exchangeResult() {
