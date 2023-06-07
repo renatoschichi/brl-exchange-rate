@@ -5,15 +5,17 @@
     <h1>BRL EXCHANGE RATE</h1>
 
     <div class="search-container">
-      <input
-        class="main-input"
-        id="main-input"
-        placeholder="Enter the currency code"
-      />
+      <select class="main-input" id="main-input" [(ngModel)]="currencyCode">
+        <option value="USD">USD - US dollar</option>
+        <option value="EUR">EUR - Euro</option>
+        <option value="GBP">GBP - British pounds</option>
+        <option value="JPY">JPY - Japanese yen</option>
+        <option value="CAD">CAD - Canadian dollar</option>
+      </select>
       <button
         class="result-button"
         id="result-button"
-        (click)="exchangeResult()"
+        (click)="fetchCurrentExchangeRate()"
       >
         EXCHANGE RESULT
       </button>
@@ -25,14 +27,14 @@
       <div class="date-currency">
         <div class="texts">
           <h5>Exchange rate now</h5>
-          <span>09/03/2022 - 15h09</span>
+          <span>{{ currentDate }} - {{ currentTime }}</span>
         </div>
 
-        <h5 class="currency-acronym">USD/BRL</h5>
+        <h5 class="currency-acronym">{{ currencyCode }}/BRL</h5>
       </div>
 
       <div class="result-value">
-        <h1>R$ 5,00</h1>
+        <h1>R$ {{ exchangeRate || 0 }}</h1>
       </div>
 
       <div class="show-data">
@@ -42,98 +44,34 @@
       </div>
 
       <div class="cards" *ngIf="visibleItens">
-        <div class="card">
-          <p class="date">09/03/2022</p>
+        <div class="card" *ngFor="let dailyRate of dailyExchangeRates">
+          <p class="date">{{ dailyRate.date }}</p>
 
           <div class="d-flex flex-row justify-content-between">
             <div class="properties">
               <p class="card-p">Open:</p>
-              <p class="card-p-result">R$ 5.0666</p>
+              <p class="card-p-result">R$ {{ dailyRate.open }}</p>
             </div>
             <div class="properties">
               <p class="card-p">Close:</p>
-              <p class="card-p-result">R$ 5.0038</p>
+              <p class="card-p-result">R$ {{ dailyRate.close }}</p>
             </div>
           </div>
 
           <div class="d-flex flex-row justify-content-between">
             <div class="properties">
               <p class="card-p">High:</p>
-              <p class="card-p-result">R$ 5.0689</p>
+              <p class="card-p-result">R$ {{ dailyRate.high }}</p>
             </div>
             <div class="properties">
               <p class="card-p">Low:</p>
-              <p class="card-p-result">R$ 4.9836</p>
+              <p class="card-p-result">R$ {{ dailyRate.low }}</p>
             </div>
           </div>
 
           <div class="properties">
             <p class="card-p">close diff (%):</p>
-            <p class="card-p-green">-1.15%</p>
-            <i class="bi bi-arrow-down-short arrow-result"></i>
-          </div>
-
-        </div>
-        <div class="card">
-          <p class="date">09/03/2022</p>
-
-          <div class="d-flex flex-row justify-content-between">
-            <div class="properties">
-              <p class="card-p">Open:</p>
-              <p class="card-p-result">R$ 5.0666</p>
-            </div>
-            <div class="properties">
-              <p class="card-p">Close:</p>
-              <p class="card-p-result">R$ 5.0038</p>
-            </div>
-          </div>
-
-          <div class="d-flex flex-row justify-content-between">
-            <div class="properties">
-              <p class="card-p">High:</p>
-              <p class="card-p-result">R$ 5.0689</p>
-            </div>
-            <div class="properties">
-              <p class="card-p">Low:</p>
-              <p class="card-p-result">R$ 4.9836</p>
-            </div>
-          </div>
-
-          <div class="properties">
-            <p class="card-p">close diff (%):</p>
-            <p class="card-p-green">-1.15%</p>
-            <i class="bi bi-arrow-down-short arrow-result"></i>
-          </div>
-
-        </div>
-        <div class="card">
-          <p class="date">09/03/2022</p>
-
-          <div class="d-flex flex-row justify-content-between">
-            <div class="properties">
-              <p class="card-p">Open:</p>
-              <p class="card-p-result">R$ 5.0666</p>
-            </div>
-            <div class="properties">
-              <p class="card-p">Close:</p>
-              <p class="card-p-result">R$ 5.0038</p>
-            </div>
-          </div>
-
-          <div class="d-flex flex-row justify-content-between">
-            <div class="properties">
-              <p class="card-p">High:</p>
-              <p class="card-p-result">R$ 5.0689</p>
-            </div>
-            <div class="properties">
-              <p class="card-p">Low:</p>
-              <p class="card-p-result">R$ 4.9836</p>
-            </div>
-          </div>
-
-          <div class="properties">
-            <p class="card-p">close diff (%):</p>
-            <p class="card-p-green">-1.15%</p>
+            <p class="card-p-green">{{ dailyRate.closeDiffPercent }}%</p>
             <i class="bi bi-arrow-down-short arrow-result"></i>
           </div>
 
@@ -146,6 +84,6 @@
 
   </div>
   <footer [ngClass]="{ 'visible-footer': !visibleItens }">
-    <p>Copyright 2022 - Action Labs</p>
+    <p>Copyright {{ currentYear }} - Action Labs</p>
   </footer>
 </div>
