@@ -1,4 +1,4 @@
-<strong>BRL Exchange Rate</strong> <br>
+🌐 <strong>BRL Exchange Rate</strong> <br>
 
 This project is an Angular application that displays the exchange rate against the Brazilian Real (BRL) <br>
 
@@ -32,7 +32,7 @@ Access the application at http://localhost:4200/
 To run the unit tests, use the command "ng test"
 
 
-<strong>This project utilizes the following technologies and dependencies:</strong>
+💻 <strong>This project utilizes the following technologies and dependencies:</strong>
 
 Angular (v14.1.0)
 
